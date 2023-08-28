@@ -1,0 +1,119 @@
+/* définit la couleur de fond de la page html */
+html{
+    height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(#141e30, #243b55);
+}
+
+#all{
+    background-color: white;
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+/* définit les caractéristique du div qui a pour class menu */
+div.menu{
+    padding-bottom: 5px;
+    padding-top: 20px;
+}
+
+/* définit les caractéristique de la balise ul */
+ul#ff{
+    position: relative;
+    padding-left: 15px;
+    padding-bottom: 15px;
+}
+
+/* définit les caractéristique basics du bouton avec comme id c */
+a#c{
+    color: white  ;
+    text-decoration: none;
+    padding: 10px;
+}
+
+/* définit les caractéristique du bouton c(id) lorsqu'il est survolé */
+a#c:hover{
+    color: white;
+    background-color: #2C84E1;
+    transition: 0.25s all;
+}
+
+/* définit les caractéristique basics du bouton avec comme id b */
+a#b{
+    color: white;
+    background-color: #2C84E1;
+    transition: 0.25s all;
+}
+
+/* définit les caractéristique basics du bouton avec comme id a */
+a#a{
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+}
+
+/* définit les caractéristique du bouton a(id) lorsqu'il est survolé */
+a#a:hover{
+    color: white;
+    background-color: #2C84E1;
+    transition: 0.25s all;
+}
+
+/* définit les caractéristique basics du bouton avec comme id d */
+a#d{
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+}
+
+/* définit les caractéristique du bouton d(id) lorsqu'il est survolé */
+a#d:hover{
+    color: white;
+    background-color: #2C84E1;
+    transition: 0.25s all;
+}
+
+/* définit les caractéristique de toutes les balises h1 */
+h1{
+    text-align:center;
+}
+
+/* définit les caractéristique du bas de page*/
+footer{
+    margin-top:20px;
+
+}
+
+/* définit les caractéristique de toutes les balises p du div qui a pour class caption2 */
+div.caption2{
+    display: inline-block;
+    height: 170px;
+    width: 400px;
+    background-color: #E3E3E3;
+    border-radius: 20px;
+    margin-left: 50px;
+    margin-top: 35px;
+    position: relative;
+}
+
+/* définit les caractéristique de toutes les balises p du div qui a pour class caption2 */
+div.caption2 p{
+    text-align:center;
+    margin-top: 28px;
+}
+
+/* définit les caractéristique du div qui a pour id capt_air */
+#capt_air{
+    height: 240px;
+
+}
+
+/* dit que toutes les balises h3 soit centrées*/
+h3{
+    text-align:center;
+}

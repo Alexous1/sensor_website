@@ -1,0 +1,26 @@
+footer{
+	padding-bottom: 500px;
+	background-color: #33B8FF;
+}
+
+header{
+	padding-top: 10px;
+	background-color: #33B8FF;
+}
+
+div.SGP30_img{
+	padding-left: 530px;
+}
+
+p.ppm{
+    display: inline-block;
+}
+
+p.ppb{
+    display: inline-block;
+}
+
+
+div.SGP30_img p{
+	padding-left:160px;
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/style_capteur_air.css">
+	<title>Capteur de la qualité de l'air</title>
+</head>
+<body>
+	    <script>
+
+function actualise () {
+
+function reqListener () {
+
+  let textResult = this.responseText;
+  console.log(textResult);
+  let jsonResult = JSON.parse(textResult);
+
+  let tempEl = document.getElementById("r");
+  tempEl.innerHTML = "<b>" + jsonResult.tvoc + "</b>";
+
+  let ecovEl = document.getElementById("cc");
+  ecovEl.innerHTML = "<b>" + jsonResult.eco2 + "</b>";
+
+}
+
+var oReq = new XMLHttpRequest();
+oReq.onload = reqListener;
+oReq.open("get", "http://192.168.1.28/send", true);
+oReq.send();
+
+}
+actualise()
+
+
+    </script>
+
+	<header>
+		<form class="navbar-form navbar-left" role="search">
+  			<div class="form-group">
+    			<input type="text" class="form-control" placeholder="Search">
+  			</div>
+  			<button type="submit" class="btn btn-default">Chercher</button>
+		</form>
+		<h1>Voici l'interface ou l'on voit les données du capteur</h1>
+	</header>
+	<div class="article">
+		<div class="SGP30_img">
+			<img src="img/sgp30.jpeg" width="400" height="390">
+			<p>SGP30</p>
+		</div>
+
+	</div>
+
+
+
+	<div>
+		<p id="r" class="ppb">bonjour</p>
+		<p id="t" class="ppb"> ppb de TVOC</p>
+		<b></b>
+		<p id="cc" class="ppm">bonjour</p>
+		<p id="y" class="ppm"> ppm de co2</p>
+	</div>
+
+	<footer>
+        <p>Copyright &copy; Alexous - 2021-2022 - All right Reserved</p>
+    </footer>
+
+	<script>
+		setInterval(actualise, 10000);
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--importe les fichier css de la page-->
+    <link rel="stylesheet" type="text/css" href="css/configuration.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="icon" type="image/png" href="Demous.png" />
+    <title>Configuration</title>
+</head>
+<body>
+
+
+    <header>
+        <!--div contenant le menu en haut de la page-->
+        <div class="menu">
+
+                <!--bouton que mènent vers une autre page html-->
+
+                <ul class="nav nav-pills" id="ff">
+                    <li><a href="Home.html" style="color:#fff" id="d">Home</a></li>
+                  <li><a href="site_test.html" style="site_test.html" id="c">Tableau de bord</a></li>
+                  <li><a href="info_capteur.html" style="color:#fff" id="a">Information capteur</a></li>
+                  <li><a href="#" style="color:#fff" id="b">Configuration des capteurs</a></li>
+                </ul>
+        </div>
+
+    </header>
+    <div id="all">
+    <h1 style="color:black; font-size:60px; margin-top: 25px;">Configuration des capteurs</h1>
+
+    <!--div contenant toutes les informations sur le capteur de qualité de l'air ainsi qu'un lien menant
+    vers un site pour configurer le capteur-->
+    <div class="caption2" id="capt_air">
+        <h3>Capteur air</h3>
+        <p><a href="" class="btn btn-primary" role="button">Configurer le capteur</a></p>
+        <p>Il est important de definir une une adresse IP fixe pour le capteur. Indique la qualité de l'air</p>
+    </div>
+
+    <!--div contenant toutes les informations sur la prise connectée ainsi qu'un lien menant vers un site pour configurer
+    la prise connectée-->
+    <div class="caption2" >
+        <h3>Shelly Plug</h3>
+        <p><a href="http://192.168.1.21" class="btn btn-primary" role="button">Configurer la prise</a></p>
+        <p>indique la consommation en watt d'un appareil</p>
+    </div>
+
+    </div>
+
+    <!--bas de page-->
+    <footer>
+        <p>Copyright &copy; Alexous - 2021-2022 - All right Reserved</p>
+    </footer>
+</body>
+</html>

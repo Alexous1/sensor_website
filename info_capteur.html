@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--importe les fichier css de la page-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/info_capteur.css">
+    <link rel="icon" type="image/png" href="Demous.png" />
+    <title>Info</title>
+</head>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>
+<script>
+let serverUrl   = "ws://192.168.50.2:9001/mqtt";
+let clientId    = "alexous";
+
+let client = new Paho.MQTT.Client(serverUrl, clientId);
+client.onMessageArrived = mqttMessage;
+
+function log(message) {
+    console.log(message);
+}
+
+// send a message
+function publish (topic, message) {
+    let mqttMessage = new Paho.MQTT.Message(message);
+    mqttMessage.destinationName = topic;
+    mqttMessage.qos = 0;
+    client.send(mqttMessage);
+}
+
+// connect the client to broker
+function init () {
+    client.connect({
+        onSuccess: connectedToBroker
+    });
+}
+
+function connectedToBroker() {
+    log("Connected to broker");
+
+      }
+init();
+
+
+
+</script>
+<script>
+
+    // fonction pour allumer la prise connectée
+    function Allumer_shelly () {
+    var oReq = new XMLHttpRequest();
+    oReq.open("get", "http://192.168.1.21/relay/0?turn=on", true);
+    oReq.send();
+    }
+
+    // fonction pour éteindre la prise connectée
+    function Eteindre_shelly () {
+    var oReq = new XMLHttpRequest();
+    oReq.open("get", "http://192.168.1.21/relay/0?turn=off", true);
+    oReq.send();
+    }
+
+    // fonction qui remplace un p par une valeur obtenu grace a une requête
+    function actualise () {
+
+        function reqListener () {
+
+              let textResult = this.responseText;
+              console.log(textResult);
+              let jsonResult = JSON.parse(textResult);
+
+              let p = document.getElementById("watt");
+              p.innerHTML = "<b>" + jsonResult.power + "</b>";
+
+
+        }
+
+        var oReq = new XMLHttpRequest();
+        oReq.onload = reqListener;
+        oReq.open("get", "http://192.168.1.21/meter/0", true);
+        oReq.send();
+
+}
+actualise()
+
+</script>
+
+<header>
+
+    <!--div contenant le menu en haut de la page-->
+    <div class="menu">
+
+        <!--bouton que mènent vers une autre page html-->
+        <ul class="nav nav-pills" id="ff">
+            <li><a href="Home.html" style="color:#fff" id="d">Home</a></li>
+            <li><a href="site_test.html" style="color:#fff" id="c">Tableau de bord</a></li>
+            <li><a href="#" style="color:#fff" id="a">Information capteur</a></li>
+            <li><a href="configuration.html" style="color:#fff" id="b">Configuration des capteurs</a></li>
+        </ul>
+
+    </div>
+</header>
+
+<div id="all">
+<h1 style="color:black; font-size:60px; margin-top: 25px;">Informations des capteurs</h1>
+
+<div class="exemple">
+
+
+    <!-- div contenant les informations sur le capteur de qualité de l'air -->
+    <div class="sgp30">
+        <center><h3 class="title">SGP30</h3></center>
+        <t class="info">La quantiter de co2 dans l'air</t>
+        <p class="info"> est de:
+            <t class="value" id="sgp30_ppm"></t>
+            ppm
+        </p>
+        <p></p>
+        <p class="info">La quantiter de composé</p>
+        <p class="info"> volatiles dans l'air est de
+            <t class="value" id="sgp30_ppb"></t>
+            ppb
+        </p>
+        <p></p>
+        <p class="info">Les informations de la qualité de l'air sont envoyée toutes les dix secondes</p>
+    </div>
+
+    <!-- div contenant les informations sur le capteur de température de d'humidité-->
+    <div class="SHTC3">
+        <center><h3 class="title">SHTC3</h3></center>
+        <t class="info">Il fait</t>
+        <t class="value" id="sht_temp"></t>
+        <t> degrés</t>
+        <p></p>
+        <t class="info">Il y a</t>
+        <t class="value" id="sht_hum"></t>
+        <t>% d'humidité</t>
+        <p></p>
+        <p class="info">Les informations de la qualité de l'air sont envoyées toutes les dix secondes</p>
+    </div>
+</div>
+
+<!-- div contenant les informations sur la prise connectée -->
+<div class="shelly">
+    <center><h3 class="title">Shelly Plug</h3></center>
+    <p class="info">la consommation actuelle</p>
+    <p class="info"> de la prise et de:
+        <t id="watt"></t>
+        watt
+    </p>
+    <p></p>
+    <p class="info">La consommation en watt est envoyée toutes les dix secondes</p>
+</div>
+</div>
+<!-- bas de page -->
+<footer>
+    <p>Copyright &copy; Alexous - 2021-2022 - All right Reserved</p>
+</footer>
+
+<script>
+    setTimeout(actualise, 10000);
+
+</script>
+</body>
+</html>
