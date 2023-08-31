@@ -1,3 +1,3 @@
 # sensor_website
 
-![Portfolio Part](https://github.com/Alexous1/sensor/blob/main/img/test.gif)
+!(https://github.com/Alexous1/sensor_website/blob/master/img/test.gif)
